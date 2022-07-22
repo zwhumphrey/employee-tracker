@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS tracker;
+DROP DATABASE IF EXISTS tracker_db;
 
-CREATE DATABASE tracker;
+CREATE DATABASE tracker_db;
 
-USE tracker;
+USE tracker_db;
 
 CREATE TABLE deparment (
     id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
