@@ -1,4 +1,4 @@
-USE tracker_db;
+USE tracker;
 
 INSERT INTO department (name)
 VALUES ("Sales");

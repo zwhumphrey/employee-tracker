@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS tracker_db;
+DROP DATABASE IF EXISTS tracker;
 
-CREATE DATABASE tracker_db;
+CREATE DATABASE tracker;
 
-USE tracker_db;
+USE tracker;
 
-CREATE TABLE deparment (
+CREATE TABLE department (
     id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     name VARCHAR(30) NULL
 );
@@ -13,7 +13,7 @@ CREATE TABLE role (
     id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     title VARCHAR(30) NULL,
     salary DECIMAL(10.2) NULL,
-    deparment_id INT NULL
+    department_id INT NULL
 );
 
 CREATE TABLE employee (
