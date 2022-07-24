@@ -145,26 +145,42 @@ function viewEmployees() {
 
 // add department
 function addDepartments() {
-  console.log("Add new Department!");
-
-  var query = `SELECT *
-          FROM department`;
+  var query = `SELECT * FROM department`;
 
   db.query(query, function (err, res) {
     if (err) throw err;
 
-    const addDepartment = res.map(({ id, name }) => ({
+    const departmentAddition = res.map(({ id, name }) => ({
       value: id,
       name: `${id} ${name}`,
     }));
 
     console.table(res);
 
-    insert(addDepartment);
+    insertRole(departmentAddition);
   });
 }
+// function addDepartments() {
+//   console.log("Add new Department!");
 
-function insert(addDepartment) {
+//   var query = `SELECT *
+//           FROM department`;
+
+//   db.query(query, function (err, res) {
+//     if (err) throw err;
+
+//     const addDepartment = res.map(({ id, name }) => ({
+//       value: id,
+//       name: `${id} ${name}`,
+//     }));
+
+//     console.table(res);
+
+//     insert(addDepartment);
+//   });
+// }
+
+function insert(departmentAddition) {
   inquirer
     .prompt([
       {
@@ -216,7 +232,6 @@ function addRoles() {
     }));
 
     console.table(res);
-    console.log("Department array!");
 
     insertRole(allDepartments);
   });
@@ -238,7 +253,7 @@ function insertRole(allDepartments) {
       {
         type: "list",
         name: "departmentId",
-        message: "Department?",
+        message: "What Department is it in?",
         choices: allDepartments,
       },
     ])
