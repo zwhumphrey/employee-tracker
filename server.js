@@ -204,6 +204,65 @@ function insert(addDepartment) {
 }
 // add role
 // enter the name, salary, and department
+function addRoles() {
+  var query = `SELECT * FROM role`;
+
+  db.query(query, function (err, res) {
+    if (err) throw err;
+
+    const allDepartments = res.map(({ id, name }) => ({
+      value: id,
+      name: `${id} ${name}`,
+    }));
+
+    console.table(res);
+    console.log("Department array!");
+
+    insertRole(allDepartments);
+  });
+}
+
+function insertRole(allDepartments) {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "roleName",
+        message: "What is the Role?",
+      },
+      {
+        type: "input",
+        name: "roleSalary",
+        message: "What is the Role Salary?",
+      },
+      {
+        type: "list",
+        name: "departmentId",
+        message: "Department?",
+        choices: allDepartments,
+      },
+    ])
+    .then(function (answer) {
+      var query = `INSERT INTO role SET ?`;
+
+      db.query(
+        query,
+        {
+          title: answer.title,
+          salary: answer.salary,
+          department_id: answer.departmentId,
+        },
+        function (err, res) {
+          if (err) throw err;
+
+          console.table(res);
+          console.log("Role successfully inserted!");
+
+          startTracker();
+        }
+      );
+    });
+}
 
 // add employee
 // enter the employee’s first name, last name, role, and manager
