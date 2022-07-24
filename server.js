@@ -67,7 +67,7 @@ function startTracker() {
           break;
 
         case "ADD_DEPARTMENTS":
-          addDeparments();
+          addDepartments();
           break;
 
         case "ADD_ROLES":
@@ -144,7 +144,64 @@ function viewEmployees() {
 }
 
 // add department
+function addDepartments() {
+  console.log("Add new Department!");
 
+  var query = `SELECT *
+          FROM department`;
+
+  db.query(query, function (err, res) {
+    if (err) throw err;
+
+    const addDepartment = res.map(({ id, name }) => ({
+      value: id,
+      name: `${id} ${name}`,
+    }));
+
+    console.table(res);
+
+    insert(addDepartment);
+  });
+}
+
+function insert(addDepartment) {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "id",
+        message: "What is the new Department id?",
+      },
+      {
+        type: "input",
+        name: "name",
+        message: "What is the new Department name?",
+      },
+    ])
+    .then(function (department) {
+      console.log(department);
+
+      var query = `INSERT INTO department SET ?`;
+      // when finished prompting, insert a new item into the db with that info
+      db.query(
+        query,
+        {
+          department_id: answer.id,
+        },
+        {
+          name: answer.name,
+        },
+        function (err, res) {
+          if (err) throw err;
+
+          console.table(res);
+          console.log("Department successfully added!\n");
+
+          startTracker();
+        }
+      );
+    });
+}
 // add role
 // enter the name, salary, and department
 
