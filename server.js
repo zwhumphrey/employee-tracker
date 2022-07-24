@@ -107,12 +107,15 @@ function viewDepartments() {
     startTracker();
   });
 }
-// add a join to change department id to department
+// job title, role id, the department that role belongs to, and the salary
 //View Roles
 function viewRoles() {
   console.log("Viewing all Roles!");
 
-  var query = `SELECT * FROM role LEFT JOIN department ON role = department`;
+  var query = `SELECT r.title, r.id, d.name AS department, r.salary
+  FROM role r
+  LEFT JOIN department d
+	ON r.department_id = r.id`;
 
   db.query(query, function (err, res) {
     if (err) throw err;
@@ -122,7 +125,7 @@ function viewRoles() {
     startTracker();
   });
 }
-// add join to view job/department/salary/manager
+// view job/department/salary/manager
 //View Employees
 function viewEmployees() {
   var query = `SELECT e.id, e.first_name, e.last_name, r.title, d.name AS department, r.salary, CONCAT(m.first_name, ' ', m.last_name) AS manager

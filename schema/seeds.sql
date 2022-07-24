@@ -1,3 +1,5 @@
+
+
 USE tracker;
 
 INSERT INTO department (name)
@@ -31,16 +33,16 @@ VALUES ("Lawyer", 190000, 4);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("John", "Doe", 1, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Mike", "Chan", 1, 1);
+VALUES ("Mike", "Chan", 2, 1);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Ashley", "Rodriguez", 2, null);
+VALUES ("Ashley", "Rodriguez", 3, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Kevin", "Tupik", 2, 3);
+VALUES ("Kevin", "Tupik", 4, 3);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Kunal", "Singh", 3, null);
+VALUES ("Kunal", "Singh", 5, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Malia", "Brown", 3, 5);
+VALUES ("Malia", "Brown", 6, 5);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Sarah", "Lourd", 4, null);
+VALUES ("Sarah", "Lourd", 7, null);
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Tom", "Allen", 4, 7);
+VALUES ("Tom", "Allen", 8, 7);
